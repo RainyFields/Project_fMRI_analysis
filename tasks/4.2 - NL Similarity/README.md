@@ -6,3 +6,6 @@
 
 ## [main.py](./main.py)
 - Just the main script, should probably add some Namespace arguments, but for now it just has static in-file inputs to create and use a `Brain` class object. 
+
+## [sentence_transformer.py](./sentence_transformer.py)
+- Holds the `ST_TaskSim` class which handles loading the sentencetransformer, embedding the task instructions, and producing an RSM.
