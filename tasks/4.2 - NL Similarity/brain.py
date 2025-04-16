@@ -434,6 +434,19 @@ class Brain:
         return correlation
 
     def compare_all_regions_rsm(self, betas_dict, baseline_rsm, save_path, print_top_k=10):
+        """
+        desc: Compare the RSM of all regions with a baseline RSM.
+        args:
+            betas_dict: dict
+                Dictionary with betas for all regions.
+            baseline_rsm: numpy array
+                Baseline RSM to compare with.
+            save_path: str
+                Path to save the results.
+            print_top_k: int
+                Number of top regions to print.
+        return: None
+        """
         rsm_similarities = pd.DataFrame(columns=['region', 'correlation'])
 
         for region in betas_dict.keys():
@@ -446,6 +459,18 @@ class Brain:
         print(rsm_similarities.nlargest(print_top_k, 'correlation'))
     
     def plot_region_rsm(self, region, betas_dict, save_path):
+        """
+        desc: Plot the RSM of a region.
+        args:
+            region: str
+                Region name.
+            betas_dict: dict
+                Dictionary with betas for the region.
+            save_path: str
+                Path to save the plot.
+        return: None
+        """
+
         betas = torch.stack(list(betas_dict.values()))
         brain_rsm = util.cos_sim(betas, betas).numpy()
 
@@ -459,6 +484,15 @@ class Brain:
         plt.savefig(save_path + region + '_rsm.png')
 
     def plot_all_regions_rsm(self, betas_dict, save_path, ):
+        """
+        desc: Plot the RSM of all regions.
+        args:
+            betas_dict: dict
+                Dictionary with betas for all regions.
+            save_path: str
+                Path to save the plot.
+        return: None
+        """
         # If save_path does not exist, create it
         if not os.path.exists(save_path):
             os.makedirs(save_path)
@@ -468,6 +502,16 @@ class Brain:
             self.plot_region_rsm(region, betas_dict[region], save_path)
 
     def plot_all_sessions_rsm(self, avg_per_sess_task_betas, save_path):
+        """
+        desc: Plot the RSM of all sessions.
+        args:
+            avg_per_sess_task_betas: dict
+                Dictionary with average betas for each region, task, and session.
+            save_path: str
+                Path to save the plot.
+        return: None
+        """
+
         # If save_path does not exist, create it
         if not os.path.exists(save_path):
             os.makedirs(save_path)
