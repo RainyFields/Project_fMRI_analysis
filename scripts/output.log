@@ -1,0 +1,801 @@
+nohup: ignoring input
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/dmsloc_category_delay_1.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/dmsloc_category_delay_2.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/dmsloc_category_delay_3.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/dmsloc_category_delay_4.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/dmsloc_category_delay_5.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/dmsloc_category_delay_6.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/dmsloc_category_delay_7.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/dmsloc_category_delay_8.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/dmsloc_category_delay_9.log
+Running task=dmsloc, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/dmsloc_category_delay_10.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/dmsloc_category_encoding_1.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/dmsloc_category_encoding_2.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/dmsloc_category_encoding_3.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/dmsloc_category_encoding_4.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/dmsloc_category_encoding_5.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/dmsloc_category_encoding_6.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/dmsloc_category_encoding_7.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/dmsloc_category_encoding_8.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/dmsloc_category_encoding_9.log
+Running task=dmsloc, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/dmsloc_category_encoding_10.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/dmsloc_location_delay_1.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/dmsloc_location_delay_2.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/dmsloc_location_delay_3.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/dmsloc_location_delay_4.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/dmsloc_location_delay_5.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/dmsloc_location_delay_6.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/dmsloc_location_delay_7.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/dmsloc_location_delay_8.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/dmsloc_location_delay_9.log
+Running task=dmsloc, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/dmsloc_location_delay_10.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/dmsloc_location_encoding_1.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/dmsloc_location_encoding_2.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/dmsloc_location_encoding_3.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/dmsloc_location_encoding_4.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/dmsloc_location_encoding_5.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/dmsloc_location_encoding_6.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/dmsloc_location_encoding_7.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/dmsloc_location_encoding_8.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/dmsloc_location_encoding_9.log
+Running task=dmsloc, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/dmsloc_location_encoding_10.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/1backloc_category_delay_1.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/1backloc_category_delay_2.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/1backloc_category_delay_3.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/1backloc_category_delay_4.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/1backloc_category_delay_5.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/1backloc_category_delay_6.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/1backloc_category_delay_7.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/1backloc_category_delay_8.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/1backloc_category_delay_9.log
+Running task=1backloc, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/1backloc_category_delay_10.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/1backloc_category_encoding_1.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/1backloc_category_encoding_2.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/1backloc_category_encoding_3.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/1backloc_category_encoding_4.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/1backloc_category_encoding_5.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/1backloc_category_encoding_6.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/1backloc_category_encoding_7.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/1backloc_category_encoding_8.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/1backloc_category_encoding_9.log
+Running task=1backloc, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/1backloc_category_encoding_10.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/1backloc_location_delay_1.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/1backloc_location_delay_2.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/1backloc_location_delay_3.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/1backloc_location_delay_4.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/1backloc_location_delay_5.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/1backloc_location_delay_6.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/1backloc_location_delay_7.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/1backloc_location_delay_8.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/1backloc_location_delay_9.log
+Running task=1backloc, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/1backloc_location_delay_10.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/1backloc_location_encoding_1.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/1backloc_location_encoding_2.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/1backloc_location_encoding_3.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/1backloc_location_encoding_4.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/1backloc_location_encoding_5.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/1backloc_location_encoding_6.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/1backloc_location_encoding_7.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/1backloc_location_encoding_8.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/1backloc_location_encoding_9.log
+Running task=1backloc, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/1backloc_location_encoding_10.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/1backctg_category_delay_1.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/1backctg_category_delay_2.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/1backctg_category_delay_3.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/1backctg_category_delay_4.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/1backctg_category_delay_5.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/1backctg_category_delay_6.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/1backctg_category_delay_7.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/1backctg_category_delay_8.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/1backctg_category_delay_9.log
+Running task=1backctg, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/1backctg_category_delay_10.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/1backctg_category_encoding_1.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/1backctg_category_encoding_2.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/1backctg_category_encoding_3.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/1backctg_category_encoding_4.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/1backctg_category_encoding_5.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/1backctg_category_encoding_6.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/1backctg_category_encoding_7.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/1backctg_category_encoding_8.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/1backctg_category_encoding_9.log
+Running task=1backctg, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/1backctg_category_encoding_10.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/1backctg_location_delay_1.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/1backctg_location_delay_2.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/1backctg_location_delay_3.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/1backctg_location_delay_4.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/1backctg_location_delay_5.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/1backctg_location_delay_6.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/1backctg_location_delay_7.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/1backctg_location_delay_8.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/1backctg_location_delay_9.log
+Running task=1backctg, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/1backctg_location_delay_10.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/1backctg_location_encoding_1.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/1backctg_location_encoding_2.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/1backctg_location_encoding_3.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/1backctg_location_encoding_4.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/1backctg_location_encoding_5.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/1backctg_location_encoding_6.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/1backctg_location_encoding_7.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/1backctg_location_encoding_8.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/1backctg_location_encoding_9.log
+Running task=1backctg, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/1backctg_location_encoding_10.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/1backobj_category_delay_1.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/1backobj_category_delay_2.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/1backobj_category_delay_3.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/1backobj_category_delay_4.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/1backobj_category_delay_5.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/1backobj_category_delay_6.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/1backobj_category_delay_7.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/1backobj_category_delay_8.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/1backobj_category_delay_9.log
+Running task=1backobj, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/1backobj_category_delay_10.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/1backobj_category_encoding_1.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/1backobj_category_encoding_2.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/1backobj_category_encoding_3.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/1backobj_category_encoding_4.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/1backobj_category_encoding_5.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/1backobj_category_encoding_6.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/1backobj_category_encoding_7.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/1backobj_category_encoding_8.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/1backobj_category_encoding_9.log
+Running task=1backobj, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/1backobj_category_encoding_10.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/1backobj_location_delay_1.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/1backobj_location_delay_2.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/1backobj_location_delay_3.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/1backobj_location_delay_4.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/1backobj_location_delay_5.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/1backobj_location_delay_6.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/1backobj_location_delay_7.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/1backobj_location_delay_8.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/1backobj_location_delay_9.log
+Running task=1backobj, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/1backobj_location_delay_10.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/1backobj_location_encoding_1.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/1backobj_location_encoding_2.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/1backobj_location_encoding_3.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/1backobj_location_encoding_4.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/1backobj_location_encoding_5.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/1backobj_location_encoding_6.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/1backobj_location_encoding_7.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/1backobj_location_encoding_8.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/1backobj_location_encoding_9.log
+Running task=1backobj, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/1backobj_location_encoding_10.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/interdmsobjABAB_category_delay_1.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/interdmsobjABAB_category_delay_2.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/interdmsobjABAB_category_delay_3.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/interdmsobjABAB_category_delay_4.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/interdmsobjABAB_category_delay_5.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/interdmsobjABAB_category_delay_6.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/interdmsobjABAB_category_delay_7.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/interdmsobjABAB_category_delay_8.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/interdmsobjABAB_category_delay_9.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/interdmsobjABAB_category_delay_10.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/interdmsobjABAB_category_encoding_1.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/interdmsobjABAB_category_encoding_2.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/interdmsobjABAB_category_encoding_3.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/interdmsobjABAB_category_encoding_4.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/interdmsobjABAB_category_encoding_5.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/interdmsobjABAB_category_encoding_6.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/interdmsobjABAB_category_encoding_7.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/interdmsobjABAB_category_encoding_8.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/interdmsobjABAB_category_encoding_9.log
+Running task=interdmsobjABAB, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/interdmsobjABAB_category_encoding_10.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/interdmsobjABAB_location_delay_1.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/interdmsobjABAB_location_delay_2.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/interdmsobjABAB_location_delay_3.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/interdmsobjABAB_location_delay_4.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/interdmsobjABAB_location_delay_5.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/interdmsobjABAB_location_delay_6.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/interdmsobjABAB_location_delay_7.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/interdmsobjABAB_location_delay_8.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/interdmsobjABAB_location_delay_9.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/interdmsobjABAB_location_delay_10.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/interdmsobjABAB_location_encoding_1.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/interdmsobjABAB_location_encoding_2.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/interdmsobjABAB_location_encoding_3.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/interdmsobjABAB_location_encoding_4.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/interdmsobjABAB_location_encoding_5.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/interdmsobjABAB_location_encoding_6.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/interdmsobjABAB_location_encoding_7.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/interdmsobjABAB_location_encoding_8.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/interdmsobjABAB_location_encoding_9.log
+Running task=interdmsobjABAB, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/interdmsobjABAB_location_encoding_10.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/interdmslocABBA_category_delay_1.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/interdmslocABBA_category_delay_2.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/interdmslocABBA_category_delay_3.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/interdmslocABBA_category_delay_4.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/interdmslocABBA_category_delay_5.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/interdmslocABBA_category_delay_6.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/interdmslocABBA_category_delay_7.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/interdmslocABBA_category_delay_8.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/interdmslocABBA_category_delay_9.log
+Running task=interdmslocABBA, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/interdmslocABBA_category_delay_10.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/interdmslocABBA_category_encoding_1.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/interdmslocABBA_category_encoding_2.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/interdmslocABBA_category_encoding_3.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/interdmslocABBA_category_encoding_4.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/interdmslocABBA_category_encoding_5.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/interdmslocABBA_category_encoding_6.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/interdmslocABBA_category_encoding_7.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/interdmslocABBA_category_encoding_8.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/interdmslocABBA_category_encoding_9.log
+Running task=interdmslocABBA, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/interdmslocABBA_category_encoding_10.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/interdmslocABBA_location_delay_1.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/interdmslocABBA_location_delay_2.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/interdmslocABBA_location_delay_3.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/interdmslocABBA_location_delay_4.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/interdmslocABBA_location_delay_5.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/interdmslocABBA_location_delay_6.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/interdmslocABBA_location_delay_7.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/interdmslocABBA_location_delay_8.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/interdmslocABBA_location_delay_9.log
+Running task=interdmslocABBA, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/interdmslocABBA_location_delay_10.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/interdmslocABBA_location_encoding_1.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/interdmslocABBA_location_encoding_2.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/interdmslocABBA_location_encoding_3.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/interdmslocABBA_location_encoding_4.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/interdmslocABBA_location_encoding_5.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/interdmslocABBA_location_encoding_6.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/interdmslocABBA_location_encoding_7.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/interdmslocABBA_location_encoding_8.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/interdmslocABBA_location_encoding_9.log
+Running task=interdmslocABBA, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/interdmslocABBA_location_encoding_10.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/interdmslocABAB_category_delay_1.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/interdmslocABAB_category_delay_2.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/interdmslocABAB_category_delay_3.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/interdmslocABAB_category_delay_4.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/interdmslocABAB_category_delay_5.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/interdmslocABAB_category_delay_6.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/interdmslocABAB_category_delay_7.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/interdmslocABAB_category_delay_8.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/interdmslocABAB_category_delay_9.log
+Running task=interdmslocABAB, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/interdmslocABAB_category_delay_10.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/interdmslocABAB_category_encoding_1.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/interdmslocABAB_category_encoding_2.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/interdmslocABAB_category_encoding_3.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/interdmslocABAB_category_encoding_4.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/interdmslocABAB_category_encoding_5.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/interdmslocABAB_category_encoding_6.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/interdmslocABAB_category_encoding_7.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/interdmslocABAB_category_encoding_8.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/interdmslocABAB_category_encoding_9.log
+Running task=interdmslocABAB, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/interdmslocABAB_category_encoding_10.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/interdmslocABAB_location_delay_1.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/interdmslocABAB_location_delay_2.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/interdmslocABAB_location_delay_3.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/interdmslocABAB_location_delay_4.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/interdmslocABAB_location_delay_5.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/interdmslocABAB_location_delay_6.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/interdmslocABAB_location_delay_7.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/interdmslocABAB_location_delay_8.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/interdmslocABAB_location_delay_9.log
+Running task=interdmslocABAB, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/interdmslocABAB_location_delay_10.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/interdmslocABAB_location_encoding_1.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/interdmslocABAB_location_encoding_2.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/interdmslocABAB_location_encoding_3.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/interdmslocABAB_location_encoding_4.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/interdmslocABAB_location_encoding_5.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/interdmslocABAB_location_encoding_6.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/interdmslocABAB_location_encoding_7.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/interdmslocABAB_location_encoding_8.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/interdmslocABAB_location_encoding_9.log
+Running task=interdmslocABAB, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/interdmslocABAB_location_encoding_10.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/interdmsctgABAB_category_delay_1.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/interdmsctgABAB_category_delay_2.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/interdmsctgABAB_category_delay_3.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/interdmsctgABAB_category_delay_4.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/interdmsctgABAB_category_delay_5.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/interdmsctgABAB_category_delay_6.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/interdmsctgABAB_category_delay_7.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/interdmsctgABAB_category_delay_8.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/interdmsctgABAB_category_delay_9.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/interdmsctgABAB_category_delay_10.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/interdmsctgABAB_category_encoding_1.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/interdmsctgABAB_category_encoding_2.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/interdmsctgABAB_category_encoding_3.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/interdmsctgABAB_category_encoding_4.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/interdmsctgABAB_category_encoding_5.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/interdmsctgABAB_category_encoding_6.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/interdmsctgABAB_category_encoding_7.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/interdmsctgABAB_category_encoding_8.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/interdmsctgABAB_category_encoding_9.log
+Running task=interdmsctgABAB, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/interdmsctgABAB_category_encoding_10.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/interdmsctgABAB_location_delay_1.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/interdmsctgABAB_location_delay_2.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/interdmsctgABAB_location_delay_3.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/interdmsctgABAB_location_delay_4.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/interdmsctgABAB_location_delay_5.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/interdmsctgABAB_location_delay_6.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/interdmsctgABAB_location_delay_7.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/interdmsctgABAB_location_delay_8.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/interdmsctgABAB_location_delay_9.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/interdmsctgABAB_location_delay_10.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/interdmsctgABAB_location_encoding_1.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/interdmsctgABAB_location_encoding_2.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/interdmsctgABAB_location_encoding_3.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/interdmsctgABAB_location_encoding_4.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/interdmsctgABAB_location_encoding_5.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/interdmsctgABAB_location_encoding_6.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/interdmsctgABAB_location_encoding_7.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/interdmsctgABAB_location_encoding_8.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/interdmsctgABAB_location_encoding_9.log
+Running task=interdmsctgABAB, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/interdmsctgABAB_location_encoding_10.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/interdmsobjABBA_category_delay_1.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/interdmsobjABBA_category_delay_2.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/interdmsobjABBA_category_delay_3.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/interdmsobjABBA_category_delay_4.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/interdmsobjABBA_category_delay_5.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/interdmsobjABBA_category_delay_6.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/interdmsobjABBA_category_delay_7.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/interdmsobjABBA_category_delay_8.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/interdmsobjABBA_category_delay_9.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/interdmsobjABBA_category_delay_10.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/interdmsobjABBA_category_encoding_1.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/interdmsobjABBA_category_encoding_2.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/interdmsobjABBA_category_encoding_3.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/interdmsobjABBA_category_encoding_4.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/interdmsobjABBA_category_encoding_5.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/interdmsobjABBA_category_encoding_6.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/interdmsobjABBA_category_encoding_7.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/interdmsobjABBA_category_encoding_8.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/interdmsobjABBA_category_encoding_9.log
+Running task=interdmsobjABBA, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/interdmsobjABBA_category_encoding_10.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/interdmsobjABBA_location_delay_1.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/interdmsobjABBA_location_delay_2.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/interdmsobjABBA_location_delay_3.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/interdmsobjABBA_location_delay_4.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/interdmsobjABBA_location_delay_5.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/interdmsobjABBA_location_delay_6.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/interdmsobjABBA_location_delay_7.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/interdmsobjABBA_location_delay_8.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/interdmsobjABBA_location_delay_9.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/interdmsobjABBA_location_delay_10.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/interdmsobjABBA_location_encoding_1.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/interdmsobjABBA_location_encoding_2.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/interdmsobjABBA_location_encoding_3.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/interdmsobjABBA_location_encoding_4.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/interdmsobjABBA_location_encoding_5.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/interdmsobjABBA_location_encoding_6.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/interdmsobjABBA_location_encoding_7.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/interdmsobjABBA_location_encoding_8.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/interdmsobjABBA_location_encoding_9.log
+Running task=interdmsobjABBA, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/interdmsobjABBA_location_encoding_10.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=1
+Logging output to logs/interdmsctgABBA_category_delay_1.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=2
+Logging output to logs/interdmsctgABBA_category_delay_2.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=3
+Logging output to logs/interdmsctgABBA_category_delay_3.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=4
+Logging output to logs/interdmsctgABBA_category_delay_4.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=5
+Logging output to logs/interdmsctgABBA_category_delay_5.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=6
+Logging output to logs/interdmsctgABBA_category_delay_6.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=7
+Logging output to logs/interdmsctgABBA_category_delay_7.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=8
+Logging output to logs/interdmsctgABBA_category_delay_8.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=9
+Logging output to logs/interdmsctgABBA_category_delay_9.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=delay, rep=10
+Logging output to logs/interdmsctgABBA_category_delay_10.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=1
+Logging output to logs/interdmsctgABBA_category_encoding_1.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=2
+Logging output to logs/interdmsctgABBA_category_encoding_2.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=3
+Logging output to logs/interdmsctgABBA_category_encoding_3.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=4
+Logging output to logs/interdmsctgABBA_category_encoding_4.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=5
+Logging output to logs/interdmsctgABBA_category_encoding_5.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=6
+Logging output to logs/interdmsctgABBA_category_encoding_6.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=7
+Logging output to logs/interdmsctgABBA_category_encoding_7.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=8
+Logging output to logs/interdmsctgABBA_category_encoding_8.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=9
+Logging output to logs/interdmsctgABBA_category_encoding_9.log
+Running task=interdmsctgABBA, decoding_feature=category, phase=encoding, rep=10
+Logging output to logs/interdmsctgABBA_category_encoding_10.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=1
+Logging output to logs/interdmsctgABBA_location_delay_1.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=2
+Logging output to logs/interdmsctgABBA_location_delay_2.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=3
+Logging output to logs/interdmsctgABBA_location_delay_3.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=4
+Logging output to logs/interdmsctgABBA_location_delay_4.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=5
+Logging output to logs/interdmsctgABBA_location_delay_5.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=6
+Logging output to logs/interdmsctgABBA_location_delay_6.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=7
+Logging output to logs/interdmsctgABBA_location_delay_7.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=8
+Logging output to logs/interdmsctgABBA_location_delay_8.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=9
+Logging output to logs/interdmsctgABBA_location_delay_9.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=delay, rep=10
+Logging output to logs/interdmsctgABBA_location_delay_10.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=1
+Logging output to logs/interdmsctgABBA_location_encoding_1.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=2
+Logging output to logs/interdmsctgABBA_location_encoding_2.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=3
+Logging output to logs/interdmsctgABBA_location_encoding_3.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=4
+Logging output to logs/interdmsctgABBA_location_encoding_4.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=5
+Logging output to logs/interdmsctgABBA_location_encoding_5.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=6
+Logging output to logs/interdmsctgABBA_location_encoding_6.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=7
+Logging output to logs/interdmsctgABBA_location_encoding_7.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=8
+Logging output to logs/interdmsctgABBA_location_encoding_8.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=9
+Logging output to logs/interdmsctgABBA_location_encoding_9.log
+Running task=interdmsctgABBA, decoding_feature=location, phase=encoding, rep=10
+Logging output to logs/interdmsctgABBA_location_encoding_10.log

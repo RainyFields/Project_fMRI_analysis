@@ -1,0 +1,19 @@
+Decoding: encoding
+Network 1
+Network 2
+Traceback (most recent call last):
+  File "feature_decoding_network_level_generalization.py", line 193, in <module>
+    main(tasks=args.tasks,
+  File "feature_decoding_network_level_generalization.py", line 175, in main
+    results = decode_regions(sessions, network_voxelwise_assignment, delay_betas, delay_df,
+  File "feature_decoding_network_level_generalization.py", line 117, in decode_regions
+    enc_acc, enc_t, enc_p = run_decoder(encoding_betas, encoding_betas, encoding_df)
+  File "feature_decoding_network_level_generalization.py", line 101, in run_decoder
+    acc = decoding(X_train, X_test, y_train, y_test,
+  File "/home/xiaoxuan/projects/202406_fMRI/scripts/helper.py", line 37, in decoding
+    rs.append(stats.pearsonr(prototypes[label], testset[i, :])[0])
+  File "/home/xiaoxuan/miniconda3/envs/multfs_xuan2/lib/python3.8/site-packages/scipy/stats/_stats_py.py", line 4454, in pearsonr
+    normxm = linalg.norm(xm)
+  File "/home/xiaoxuan/miniconda3/envs/multfs_xuan2/lib/python3.8/site-packages/scipy/linalg/_misc.py", line 154, in norm
+    return nrm2(a)
+KeyboardInterrupt

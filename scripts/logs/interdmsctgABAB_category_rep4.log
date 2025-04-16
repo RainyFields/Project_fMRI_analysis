@@ -1,0 +1,15 @@
+Decoding: encoding
+Network 1
+Network 2
+Traceback (most recent call last):
+  File "feature_decoding_network_level_generalization.py", line 193, in <module>
+    main(tasks=args.tasks,
+  File "feature_decoding_network_level_generalization.py", line 175, in main
+    results = decode_regions(sessions, network_voxelwise_assignment, delay_betas, delay_df,
+  File "feature_decoding_network_level_generalization.py", line 117, in decode_regions
+    enc_acc, enc_t, enc_p = run_decoder(encoding_betas, encoding_betas, encoding_df)
+  File "feature_decoding_network_level_generalization.py", line 84, in run_decoder
+    test_data = beta_concatenation(test_betas, [exclude_ses])[:, region_idx]
+  File "/home/xiaoxuan/projects/202406_fMRI/scripts/utils.py", line 177, in beta_concatenation
+    concatenated_betas[:, start_idx:end_idx] = betas
+KeyboardInterrupt
