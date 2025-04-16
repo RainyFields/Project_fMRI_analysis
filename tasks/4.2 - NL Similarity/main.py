@@ -1,6 +1,5 @@
 from brain import Brain
 from sentence_transformer import ST_TaskSim
-
 import nibabel as nib 
 
 if __name__ == '__main__':
@@ -83,8 +82,10 @@ if __name__ == '__main__':
 
     # Get betas per task and region; averaged over all trials for sessions and runs
     avg_task_betas = brain.average_task_betas_over_sess_run()
+    
     # Plot rsm of avg_task_betas
     brain.plot_all_regions_rsm(avg_task_betas, save_path=figures_path + 'avg_betas_all_sess/')
+
     # Compare rsms of avg_task_betas and st_tasksim
     brain.compare_all_regions_rsm(avg_task_betas, sim_scores, save_path=figures_path + 'avg_betas_all_sess/', print_top_k=10)
 
@@ -94,6 +95,7 @@ if __name__ == '__main__':
 
     # Plot rsm of avg_task_betas_first_half
     brain.plot_all_regions_rsm(avg_task_betas_first_half, save_path=figures_path + 'avg_betas_half_sess/first_half/')
+
     # Plot rsm of avg_task_betas_second_half
     brain.plot_all_regions_rsm(avg_task_betas_second_half, save_path=figures_path + 'avg_betas_half_sess/second_half/')
 
