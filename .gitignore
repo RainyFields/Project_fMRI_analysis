@@ -1,0 +1,9 @@
+data/data/glm_betas_encoding_delay_full_TR_betas/*
+data/iwisdm_trials
+data/only_fmri
+data/splits/*
+data/results/*
+data/sub-03/*
+*figures
+.DS_Store
+__pycache__
