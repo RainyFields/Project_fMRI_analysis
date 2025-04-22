@@ -11,7 +11,7 @@ import torch
 # Other imports
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
-from sentence_transformers import util
+
 
 
 class Brain:
@@ -200,7 +200,7 @@ class Brain:
 
     def average_task_betas_per_sess(self):
         """
-        desc: Average betas over sessions (but not runs).
+        desc: Average betas over runs and trials (but not session).
         return: dict
             Dictionary with average betas for each region, task, and session.
         """
@@ -243,7 +243,7 @@ class Brain:
 
     def average_task_betas_over_sess_run(self):
         """
-        desc: Average betas over sessions and runs.
+        desc: Average betas over sessions, runs, and trials.
         return: dict
             Dictionary with average betas for each region and task.
         """
@@ -404,7 +404,7 @@ class Brain:
 
         return avg_betas_dict
     
-    def compare_region_rsm(self, betas_dict, baseline_rsm):
+    def compare_region_rsm(self, betas_dict, baseline_rsm, metric):
         """
         desc: Compare the RSM of a region with a baseline RSM.
         args:
@@ -418,7 +418,7 @@ class Brain:
 
         # Brain RSM
         betas = torch.stack(list(betas_dict.values()))
-        brain_rsm = util.cos_sim(betas, betas).numpy()
+        brain_rsm = metric(betas, betas)
 
         # Only need upper triangle of the RSMs
         baseline_rsm = baseline_rsm[np.triu_indices(baseline_rsm.shape[0], k=1)]
@@ -433,7 +433,7 @@ class Brain:
         
         return correlation
 
-    def compare_all_regions_rsm(self, betas_dict, baseline_rsm, save_path, print_top_k=10):
+    def compare_all_regions_rsm(self, betas_dict, baseline_rsm, metric, save_path, print_top_k=10):
         """
         desc: Compare the RSM of all regions with a baseline RSM.
         args:
@@ -450,7 +450,7 @@ class Brain:
         rsm_similarities = pd.DataFrame(columns=['region', 'correlation'])
 
         for region in betas_dict.keys():
-            corr = self.compare_region_rsm(betas_dict[region], baseline_rsm)
+            corr = self.compare_region_rsm(betas_dict[region], baseline_rsm, metric)
             rsm_similarities.loc[len(rsm_similarities)] = [region, corr]
 
         rsm_similarities.to_csv(save_path + 'rsm_similarities.csv')
@@ -458,7 +458,7 @@ class Brain:
         # Print top k regions
         print(rsm_similarities.nlargest(print_top_k, 'correlation'))
     
-    def plot_region_rsm(self, region, betas_dict, save_path):
+    def plot_region_rsm(self, region, betas_dict, metric, save_path):
         """
         desc: Plot the RSM of a region.
         args:
@@ -472,7 +472,7 @@ class Brain:
         """
 
         betas = torch.stack(list(betas_dict.values()))
-        brain_rsm = util.cos_sim(betas, betas).numpy()
+        brain_rsm = metric(betas, betas)
 
         # Plot region rsm with ticklabels as sentences
         plt.clf()
@@ -483,7 +483,7 @@ class Brain:
         plt.title(region)
         plt.savefig(save_path + region + '_rsm.png')
 
-    def plot_all_regions_rsm(self, betas_dict, save_path, ):
+    def plot_all_regions_rsm(self, betas_dict, metric, save_path):
         """
         desc: Plot the RSM of all regions.
         args:
@@ -499,9 +499,9 @@ class Brain:
 
         for region in betas_dict.keys(): 
 
-            self.plot_region_rsm(region, betas_dict[region], save_path)
+            self.plot_region_rsm(region, betas_dict[region], metric, save_path)
 
-    def plot_all_sessions_rsm(self, avg_per_sess_task_betas, save_path):
+    def plot_all_sessions_rsm(self, avg_per_sess_task_betas, metric, save_path):
         """
         desc: Plot the RSM of all sessions.
         args:
@@ -518,6 +518,6 @@ class Brain:
 
         for region in avg_per_sess_task_betas.keys(): 
             for session in avg_per_sess_task_betas[region].keys():
-                self.plot_region_rsm(region + '_' + session, avg_per_sess_task_betas[region][session], save_path)
+                self.plot_region_rsm(region + '_' + session, avg_per_sess_task_betas[region][session], metric, save_path)
             
 

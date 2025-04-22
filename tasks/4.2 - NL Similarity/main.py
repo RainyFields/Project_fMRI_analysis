@@ -1,6 +1,10 @@
 from brain import Brain
 from sentence_transformer import ST_TaskSim
 import nibabel as nib 
+from sklearn.metrics.pairwise import cosine_similarity, euclidean_distances
+from scipy.stats import pearsonr
+from scipy.spatial import procrustes
+from sentence_transformers import util
 
 if __name__ == '__main__':
 
@@ -35,7 +39,7 @@ if __name__ == '__main__':
     sessions = ['ses1', 'ses2', 'ses3', 'ses4', 'ses5', 'ses6', 'ses7', 'ses8', 'ses9', 'ses10', 'ses11', 'ses12', 'ses13', 'ses14', 'ses15', 'ses16']
 
     # Directory paths
-    basedir = '/Users/lucasgomez/Desktop/Neuro/Bashivan/Hackthon_WM_fMRI/'
+    basedir = './'
     datadir = basedir + 'data/'
     betasdir = datadir + 'data/glm_betas_encoding_delay_full_TR_betas/' + subj + '/'
     network_file =  datadir + 'ColeAnticevicNetPartition/cortex_parcel_network_assignments.txt'
@@ -43,6 +47,7 @@ if __name__ == '__main__':
     table_path = datadir + 'Glasser_2016_Table.xlsx'
     figures_path = basedir + 'tasks/4.2 - NL Similarity/figures/'
 
+    # Network mapping
     network_mapping = {
                         1: "primary visual",
                         2: "secondary visual",
@@ -57,6 +62,12 @@ if __name__ == '__main__':
                         11: "ventral multimodal",
                         12: "orbito-affective",
                         }
+    
+    # Similarity metrics
+    metrics = {'euclidean': euclidean_distances,
+              'cosine': cosine_similarity,
+              'correlation': lambda x, y: 1 - pearsonr(x.flatten(), y.flatten())[0],
+              }
 
     # Atlas 
     glasser_atlas = nib.load(glasser_atlas_str).get_fdata()[0].astype(int)
@@ -80,33 +91,21 @@ if __name__ == '__main__':
     # Load and map atlas
     # brain.load_and_map_atlas(table_path=table_path)  # UNCOMMENT IF DOING ALL REGIONS
 
-    # Get betas per task and region; averaged over all trials for sessions and runs
+    # Get betas per task, region; averaged over all session, runs, and trials.
     avg_task_betas = brain.average_task_betas_over_sess_run()
+
+    similarity_metric = 'cosine'  # [util.cos_sim, euclidean]
     
     # Plot rsm of avg_task_betas
-    brain.plot_all_regions_rsm(avg_task_betas, save_path=figures_path + 'avg_betas_all_sess/')
+    brain.plot_all_regions_rsm(avg_task_betas, metrics[similarity_metric], save_path=figures_path + 'avg_betas_all_sess_' + similarity_metric + '/')
 
     # Compare rsms of avg_task_betas and st_tasksim
-    brain.compare_all_regions_rsm(avg_task_betas, sim_scores, save_path=figures_path + 'avg_betas_all_sess/', print_top_k=10)
-
-    # Get betas per task and region; averaged over all trails & runs for half of sessions
-    avg_task_betas_first_half = brain.average_task_betas_over_halfsess_run(True)
-    avg_task_betas_second_half = brain.average_task_betas_over_halfsess_run(False)
-
-    # Plot rsm of avg_task_betas_first_half
-    brain.plot_all_regions_rsm(avg_task_betas_first_half, save_path=figures_path + 'avg_betas_half_sess/first_half/')
-
-    # Plot rsm of avg_task_betas_second_half
-    brain.plot_all_regions_rsm(avg_task_betas_second_half, save_path=figures_path + 'avg_betas_half_sess/second_half/')
+    brain.compare_all_regions_rsm(avg_task_betas, sim_scores, metrics[similarity_metric], save_path=figures_path + 'avg_betas_all_sess_' + similarity_metric + '/', print_top_k=10)
 
     # Get betas per task, region, and session; averaged over all trials for runs
-    avg_per_sess_task_betas = brain.average_task_betas_per_sess()
+    # avg_per_sess_task_betas = brain.average_task_betas_per_sess()
 
     # Plot rsm of avg_per_sess_task_betas
-    brain.plot_all_sessions_rsm(avg_per_sess_task_betas, save_path=figures_path + 'avg_betas_per_sess/')
+    # brain.plot_all_sessions_rsm(avg_per_sess_task_betas, metrics[similarity_metric], save_path=figures_path + 'avg_betas_per_sess_euclid' + similarity_metric + '/')
 
-    # Get betas per task and region; averaged over all trials for sessions and runs, with one session left out
-    for out_sess in sessions:
-        avg_1o_sess_task_betas = brain.leave_1session_out_average_task_betas(out_sess=out_sess)
-        # Plot rsm of avg_1o_sess_task_betas
-        brain.plot_all_regions_rsm(avg_1o_sess_task_betas, save_path=figures_path + 'avg_betas_per_sess_leave_out/' + out_sess + '/')
+    # Get betas per task, region, and trial; averages over all sessions and runs 

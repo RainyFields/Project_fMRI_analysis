@@ -40,7 +40,8 @@ class ST_TaskSim:
         embeddings = self.encode(self.instructions, convert_to_tensor=True)
         
         # Compute cosine-similarities for each sentence with each other sentence
-        scores = util.cos_sim(embeddings, embeddings).cpu().numpy()
+        # scores = util.cos_sim(embeddings, embeddings).cpu().numpy()
+        scores = euclidean_distances(embeddings.cpu().numpy(), embeddings.cpu().numpy())
 
         return scores
 
