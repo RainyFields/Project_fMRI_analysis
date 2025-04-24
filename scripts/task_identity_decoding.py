@@ -73,7 +73,9 @@ def decode_task_identity_by_network(task_betas, df_conditions,
         print(f"\n🔍 Decoding for Network {net_id}")
         region_idx = np.where(network_voxelwise_assignment == net_id)[0]
 
+        # Initialize once per network
         X, y, ses_labels = [], [], []
+
         for j, task in enumerate(all_tasks):
             for sess in sessions:
                 for run in df_conditions[task].get(sess, {}):
@@ -81,43 +83,47 @@ def decode_task_identity_by_network(task_betas, df_conditions,
                     df = df_conditions[task].get(sess, {}).get(run)
                     if betas is None or df is None:
                         continue
+                    # Transpose: (voxels, trials) → (trials, voxels)
                     X.append(betas[region_idx, :].T)
+                    y += [task_indices[task]] * betas.shape[1]
+                    ses_labels += [sess] * betas.shape[1]
 
-                    y += [task_indices[task]] * X[-1].shape[0]
-                    ses_labels += [sess] * X[-1].shape[0]
+        if len(X) == 0:
+            print(f"⚠️ No data for Network {net_id}")
+            continue
 
-            if len(X) == 0:
-                print(f"⚠️ No data for Network {net_id}")
+        # Concatenate once
+        X = np.concatenate(X, axis=0)
+        y = np.array(y)
+        ses_labels = np.array(ses_labels)
+
+        print(f"✅ X shape: {X.shape}, y length: {len(y)}, unique sessions: {len(set(ses_labels))}")
+
+        unique_sess = sorted(set(ses_labels))
+        fold_preds = []
+
+        for leave_out_sess in unique_sess:
+            train_idx = ses_labels != leave_out_sess
+            test_idx = ses_labels == leave_out_sess
+            if sum(test_idx) == 0 or sum(train_idx) == 0:
                 continue
-            
-            X = np.concatenate(X, axis=0)
-            y = np.array(y)
-            print(f"X shape: {X.shape}")
-            print(f"y shape: {len(y)}")
-            ses_labels = np.array(ses_labels)
 
-            unique_sess = sorted(set(ses_labels))
-            fold_preds = []
+            X_train, X_test = X[train_idx], X[test_idx]
+            y_train, y_test = y[train_idx], y[test_idx]
 
-            for leave_out_sess in unique_sess:
-                train_idx = ses_labels != leave_out_sess
-                test_idx = ses_labels == leave_out_sess
-                if sum(test_idx) == 0 or sum(train_idx) == 0:
-                    continue
+            acc = decoding(X_train, X_test, y_train, y_test,
+                           classifier=classifier,
+                           feature_normalization=feature_normalization,
+                           confusion=False)
 
-                X_train, X_test = X[train_idx], X[test_idx]
-                y_train, y_test = y[train_idx], y[test_idx]
+            fold_preds.append(np.mean(acc))  # Ensure scalar
 
-                acc = decoding(X_train, X_test, y_train, y_test,
-                            classifier=classifier,
-                            feature_normalization=feature_normalization,
-                            confusion=False)
-                fold_preds.append(np.mean(acc))
-            print(f"len of fold_preds: {len(fold_preds)}")
-            if fold_preds:
-                results[i, j] = np.mean(fold_preds, axis=0)
+        print(f"len of fold_preds: {len(fold_preds)}")
+        if fold_preds:
+            results[i, :] = np.mean(fold_preds)  # Store mean across folds per network
 
     return results, network_ids
+
 
 def plot_heatmap(results, network_ids, all_tasks, out_path, chance_level=None):
     plt.figure(figsize=(12, 6))
