@@ -1,35 +1,47 @@
+
+
 import os
-import h5py
 import numpy as np
 import pandas as pd
 import nibabel as nib
+from collections import defaultdict
 from pathlib import Path
-from sklearn.model_selection import StratifiedKFold
-from scipy.stats import ttest_1samp
-from statsmodels.stats.multitest import multipletests
+from itertools import product
+from utils import filter_task_betas
 from helper import decoding
-from utils import filter_task_betas, beta_concatenation, df_concatenation
-import argparse
 
-# Constants
-PARENT_DIR = Path.cwd().parent
+# ========== Config ==========
+PARENT_DIR = "/mnt/tempdata/Project_fMRI_analysis_data"
 GLASSER_ATLAS_PATH = os.path.join(PARENT_DIR, 'data', 'Glasser_LR_Dense64k.dlabel.nii')
-NUM_REGIONS = 12
-NUM_VOXELS = 64984
-EXCLUDED_SESSION = 1000
+SESSION_PAIR_DIR = os.path.join(PARENT_DIR, "network_level_results_cross_task_LOSO/task_pair_session_csvs_strategy2/")
+OUTPUT_DIR = os.path.join(PARENT_DIR, "network_level_results_cross_task_LOSO/decoding_results_strategy2/")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Load Glasser atlas and map Cole networks
+NUM_REGIONS = 12
+EXCLUDED_SESSION = 1000
+DECODING_FEATURE = "category"
+CLASSIFIER = "distance"
+FEATURE_NORMALIZATION = True
+MIN_TRIALS = 5
+SUBJ = "sub-03"
+# TASKS = ["1backloc", "1backctg", "dmsloc"]
+TASKS = ["1backloc", "1backctg", "1backobj", "dmsloc",
+         "interdmsobjABAB", "interdmslocABBA", "interdmslocABAB",
+         "interdmsctgABAB", "interdmsobjABBA", "interdmsctgABBA"]
+
+# ========== Helper Functions ==========
+
 def load_network_partitions():
     glasser_atlas = nib.load(GLASSER_ATLAS_PATH).get_fdata()[0].astype(int)
     file_path_base = "/home/xiaoxuan/projects/ColeAnticevicNetPartition/"
-    network_region_assignment = np.loadtxt(os.path.join(file_path_base, "cortex_parcel_network_assignments.txt"), dtype=int)
+    network_region_assignment = np.loadtxt(
+        os.path.join(file_path_base, "cortex_parcel_network_assignments.txt"), dtype=int)
     network_voxelwise_assignment = np.zeros((glasser_atlas.shape[0], 1))
     for region in range(1, 361):
         region_idx = np.where(glasser_atlas == region)[0]
         network_voxelwise_assignment[region_idx] = network_region_assignment[region - 1]
     return network_voxelwise_assignment.squeeze()
 
-# Data loading helpers
 def get_paths_and_tasks(subj, excluded_session):
     sessions = [f"ses{i}" for i in range(1, 17) if i != excluded_session]
     runs = [f"run-{i:02d}" for i in range(1, 6)]
@@ -37,6 +49,7 @@ def get_paths_and_tasks(subj, excluded_session):
     return sessions, runs, datadir
 
 def load_task_data(tasks, sessions, runs, datadir):
+    import h5py
     task_betas = {}
     df_conditions = {}
     for task in tasks:
@@ -57,111 +70,129 @@ def load_task_data(tasks, sessions, runs, datadir):
                     df_conditions[task][sess][run] = pd.read_csv(csv_path)
     return task_betas, df_conditions
 
-def get_filtered_task_betas(task_betas, df_conditions, first_delay_only=False, second_delay_only=False):
-    delay_betas, delay_df = filter_task_betas(task_betas, df_conditions, phase="delay",
-                                               first_delay_only=first_delay_only,
-                                               second_delay_only=second_delay_only)
+def get_filtered_task_betas(task_betas, df_conditions):
+    delay_betas, delay_df = filter_task_betas(task_betas, df_conditions, phase="delay")
     return delay_betas, delay_df
 
-def decode_cross_task(sessions, glasser_atlas, delay_betas, delay_df,
-                      tasks, decoding_feature, classifier, feature_normalization, random_state=42):
+def load_selected_session_pairs(task_pairs, max_pairs_per_task=10):
+    all_pairs = []
+    for task_a, task_b in task_pairs:
+        fname = f"{task_a}_to_{task_b}_session_pairs.csv"
+        path = os.path.join(SESSION_PAIR_DIR, fname)
+        if os.path.exists(path):
+            df = pd.read_csv(path)
+            df["task_a"] = task_a
+            df["task_b"] = task_b
+            if len(df) > max_pairs_per_task:
+                df = df.sample(n=max_pairs_per_task, random_state=42)
+            all_pairs.append(df)
+        else:
+            print(f"⚠️ Missing: {fname}")
+    return pd.concat(all_pairs, ignore_index=True) if all_pairs else pd.DataFrame()
 
-    def run_decoder(train_task, test_task):
-        acc_map = np.zeros((NUM_VOXELS, 1))
-        t_map = np.zeros((NUM_VOXELS, 1))
-        p_map = np.zeros((NUM_VOXELS, 1))
+def df_concatenation(df_dict, session_list):
+    all_dfs = []
+    for sess in session_list:
+        for task in df_dict:
+            if sess in df_dict[task]:
+                for run in df_dict[task][sess]:
+                    all_dfs.append(df_dict[task][sess][run])
+            else:
+                print(f"⚠️ Session {sess} not in df_dict for task {task}")
+    if not all_dfs:
+        raise ValueError(f"No condition data found for sessions: {session_list}")
+    return pd.concat(all_dfs, axis=0, ignore_index=True)
 
-        for region in range(NUM_REGIONS + 1):
-            print(f"Region {region} | Train: {train_task} → Test: {test_task}")
-            region_idx = np.where(glasser_atlas == region)[0]
-            if len(region_idx) == 0:
-                continue
-            fold_accuracies = []
+def beta_concatenation(beta_dict, session_list):
+    all_betas = []
+    for sess in session_list:
+        for task in beta_dict:
+            if sess in beta_dict[task]:
+                for run in beta_dict[task][sess]:
+                    all_betas.append(beta_dict[task][sess][run])
+            else:
+                print(f"⚠️ Session {sess} not in beta_dict for task {task}")
+    if not all_betas:
+        raise ValueError(f"No beta data found for sessions: {session_list}")
+    return np.concatenate(all_betas, axis=1)
 
-            for exclude_ses in sessions:
-                train_data = beta_concatenation({train_task: delay_betas[train_task]}, [exclude_ses])[:, region_idx]
-                test_data = beta_concatenation({test_task: delay_betas[test_task]}, [exclude_ses])[:, region_idx]
-                train_labels = df_concatenation({train_task: delay_df[train_task]}, [exclude_ses])[decoding_feature].to_numpy()
-                test_labels = df_concatenation({test_task: delay_df[test_task]}, [exclude_ses])[decoding_feature].to_numpy()
+def decode_all_pairs_grouped(pair_df, delay_betas, delay_df, glasser_atlas, output_dir):
+    grouped = pair_df.groupby(["task_a", "task_b"])
+    for (task_a, task_b), df_group in grouped:
+        print(f"\n🧠 Decoding {task_a} → {task_b} across {len(df_group)} session pairs")
 
-                if len(train_data) == 0 or len(test_data) == 0:
+        pair_results = []
+
+        for idx, row in df_group.iterrows():
+            sessions_a = row['sessions_a'].split(";")
+            sessions_b = row['sessions_b'].split(";")
+
+            for region in range(NUM_REGIONS + 1):
+                region_idx = np.where(glasser_atlas == region)[0]
+                if len(region_idx) == 0:
                     continue
 
-                acc = decoding(train_data, test_data, train_labels, test_labels,
-                               classifier=classifier, confusion=False,
-                               feature_normalization=feature_normalization)
-                fold_accuracies.append(np.mean(acc))
+                try:
+                    train_X = beta_concatenation({task_a: delay_betas[task_a]}, sessions_a)[region_idx, :].T
+                    train_y = df_concatenation({task_a: delay_df[task_a]}, sessions_a)[DECODING_FEATURE].to_numpy()
 
-            if fold_accuracies:
-                fold_accuracies = [a for a in fold_accuracies if not np.isnan(a)]
-                if fold_accuracies:
-                    acc_map[region_idx] = np.mean(fold_accuracies)
-                    t_stat, p_val = ttest_1samp(fold_accuracies, popmean=0.5, alternative='greater')
-                    t_map[region_idx] = t_stat
-                    p_map[region_idx] = p_val
-        return acc_map, t_map, p_map
+                    test_X = beta_concatenation({task_b: delay_betas[task_b]}, sessions_b)[region_idx, :].T
+                    test_y = df_concatenation({task_b: delay_df[task_b]}, sessions_b)[DECODING_FEATURE].to_numpy()
 
-    results = {}
-    for i, train_task in enumerate(tasks):
-        for test_task in tasks[i+1:]:
-            key = f"{train_task}_to_{test_task}"
-            results[key] = run_decoder(train_task, test_task)
-    return results
+                    if len(train_X) < MIN_TRIALS or len(test_X) < MIN_TRIALS:
+                        continue
 
-def correct_p_values(p_map):
-    flat_p = p_map.flatten()
-    _, corrected, _, _ = multipletests(flat_p, alpha=0.05, method='fdr_bh')
-    return corrected.reshape(p_map.shape)
+                    acc = decoding(train_X, test_X, train_y, test_y,
+                                   classifier=CLASSIFIER, confusion=False,
+                                   feature_normalization=FEATURE_NORMALIZATION)
+                    mean_acc = np.mean(acc)
 
-def save_results(acc, t_map, p_map, phase_name, tasks, decoding_feature,
-                 first_delay_only=False, second_delay_only=False, rep=1):
-    suffix = ""
-    if first_delay_only:
-        suffix = "_first_delay_only"
-    elif second_delay_only:
-        suffix = "_second_delay_only"
+                    pair_results.append({
+                        "region": region,
+                        "accuracy": mean_acc,
+                        "train_trials": len(train_X),
+                        "test_trials": len(test_X),
+                        "sessions_a": ";".join(sessions_a),
+                        "sessions_b": ";".join(sessions_b)
+                    })
 
-    result_dir = Path(f"{PARENT_DIR}/network_level_results_cross_task/{'_'.join(tasks)}_{decoding_feature}_{phase_name}{suffix}")
-    result_dir.mkdir(parents=True, exist_ok=True)
+                except Exception as e:
+                    print(f"⚠️ Skipping {task_a} → {task_b} | Region {region} due to error: {e}")
+                    continue
 
-    np.save(result_dir / f'regionwise_acc_rep{rep}.npy', acc)
-    np.save(result_dir / f't_stats_map_rep{rep}.npy', t_map)
-    np.save(result_dir / f'p_values_map_rep{rep}.npy', p_map)
-    np.save(result_dir / f'p_values_map_corrected_rep{rep}.npy', correct_p_values(p_map))
+        # Save results immediately for this task pair
+        if pair_results:
+            df_results = pd.DataFrame(pair_results)
+            fname = f"{task_a}_to_{task_b}_accuracies.csv"
+            df_results.to_csv(os.path.join(output_dir, fname), index=False)
+            print(f"✅ Saved: {fname}")
+        else:
+            print(f"⚠️ No results to save for {task_a} → {task_b}")
 
-def main(subj="sub-03", tasks=None, decoding_feature="category",
-         classifier="distance", feature_normalization=True,
-         first_delay_only=False, second_delay_only=False, rep=1, random_state=42):
 
-    if tasks is None:
-        tasks = ["dmsloc"]
+def save_accuracies(accuracies, output_dir):
+    for task_a in accuracies:
+        for task_b in accuracies[task_a]:
+            df = pd.DataFrame(accuracies[task_a][task_b])
+            if not df.empty:
+                filename = f"{task_a}_to_{task_b}_accuracies.csv"
+                filepath = os.path.join(output_dir, filename)
+                df.to_csv(filepath, index=False)
+                print(f"✅ Saved: {filepath}")
+            else:
+                print(f"⚠️ No results to save for {task_a} → {task_b}")
 
-    sessions, runs, datadir = get_paths_and_tasks(subj, EXCLUDED_SESSION)
-    task_betas, df_conditions = load_task_data(tasks, sessions, runs, datadir)
-    delay_betas, delay_df = get_filtered_task_betas(task_betas, df_conditions, first_delay_only, second_delay_only)
+# ========== Main ==========
 
+def main():
+    sessions, runs, datadir = get_paths_and_tasks(SUBJ, EXCLUDED_SESSION)
+    task_betas, df_conditions = load_task_data(TASKS, sessions, runs, datadir)
+    delay_betas, delay_df = get_filtered_task_betas(task_betas, df_conditions)
+    task_pairs = list(product(TASKS, TASKS))
+    pair_df = load_selected_session_pairs(task_pairs, max_pairs_per_task=10)
     glasser_atlas = load_network_partitions()
-
-    results = decode_cross_task(sessions, glasser_atlas, delay_betas, delay_df,
-                                tasks, decoding_feature, classifier, feature_normalization, random_state)
-
-    for phase_name, (acc, t_map, p_map) in results.items():
-        save_results(acc, t_map, p_map, phase_name, tasks, decoding_feature,
-                     first_delay_only=first_delay_only,
-                     second_delay_only=second_delay_only, rep=rep)
+    decode_all_pairs_grouped(pair_df, delay_betas, delay_df, glasser_atlas, OUTPUT_DIR)
+    print("✅ Finished decoding all task pairs.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run cross-task region-level decoding analysis during delay.")
-    parser.add_argument("--tasks", nargs="+", default=["dmsloc"])
-    parser.add_argument("--decoding_feature", type=str, default="category")
-    parser.add_argument("--rep", type=int, default=1)
-    parser.add_argument("--first_delay_only", action="store_true")
-    parser.add_argument("--second_delay_only", action="store_true")
-    args = parser.parse_args()
-
-    main(tasks=args.tasks,
-         decoding_feature=args.decoding_feature,
-         rep=args.rep,
-         first_delay_only=args.first_delay_only,
-         second_delay_only=args.second_delay_only,
-         random_state=args.rep)
+    main()

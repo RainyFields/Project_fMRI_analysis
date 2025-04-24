@@ -10,11 +10,8 @@ from neuromaps.datasets import fetch_fslr
 from functools import lru_cache
 from pathlib import Path
 
-# Get the current working directory
-current_directory = Path.cwd()
 
-# Get the parent directory (one level up)
-parent_dir = str(current_directory.parent)
+parent_dir = "/mnt/tempdata/Project_fMRI_analysis_data"
 glasser_atlas_str= parent_dir + '/data/Glasser_LR_Dense64k.dlabel.nii'
 glasser_atlas = nib.load(glasser_atlas_str).get_fdata()[0].astype(int)
 num_regions = 360
