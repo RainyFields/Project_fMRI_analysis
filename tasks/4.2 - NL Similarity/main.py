@@ -1,10 +1,11 @@
 from brain import Brain
-from sentence_transformer import ST_TaskSim
+from ins_embed import InsEmbedder
 import nibabel as nib 
 from sklearn.metrics.pairwise import cosine_similarity, euclidean_distances
 from scipy.stats import pearsonr
 from scipy.spatial import procrustes
 from sentence_transformers import util
+from transformers import AutoTokenizer, AutoModel
 
 if __name__ == '__main__':
 
@@ -74,9 +75,11 @@ if __name__ == '__main__':
     print('Number of regions:', glasser_atlas.shape)
 
     # Plot sentencetransformer embedding rsm
-    st_tasksim = ST_TaskSim(tasks=tasks, ins_mapping=ins_mapping, model_name='all-MiniLM-L6-v2')
-    sim_scores = st_tasksim.sentence_similarity()
-    st_tasksim.plot_heatmap(sim_scores, save_path=figures_path)
+    ins_embed_model = AutoModel.from_pretrained("sentence-transformers/all-mpnet-base-v2", trust_remote_code=True).eval()
+    tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-mpnet-base-v2")
+    ins_embedder = InsEmbedder(model=ins_embed_model, tokenizer=tokenizer, tasks=tasks, ins_mapping=ins_mapping)
+    sim_scores = ins_embedder.sentence_similarity(normalize=False)
+    ins_embedder.plot_heatmap(sim_scores, save_path=figures_path)
 
     # Load brain data
     brain = Brain(basedir=basedir, datadir=datadir, betasdir=betasdir, subj=subj, runs=runs, sessions=sessions, tasks=tasks, glasser_atlas=glasser_atlas)
@@ -87,6 +90,7 @@ if __name__ == '__main__':
 
     # Load and map network
     brain.load_and_network_map_atlas(network_file=network_file, network_mapping=network_mapping) # UNCOMMENT IF DOING NETWORKS
+    
 
     # Load and map atlas
     # brain.load_and_map_atlas(table_path=table_path)  # UNCOMMENT IF DOING ALL REGIONS
@@ -94,18 +98,48 @@ if __name__ == '__main__':
     # Get betas per task, region; averaged over all session, runs, and trials.
     avg_task_betas = brain.average_task_betas_over_sess_run()
 
+    # Get regions
+    regions = list(avg_task_betas.keys())
+
     similarity_metric = 'cosine'  # [util.cos_sim, euclidean]
     
     # Plot rsm of avg_task_betas
-    brain.plot_all_regions_rsm(avg_task_betas, metrics[similarity_metric], save_path=figures_path + 'avg_betas_all_sess_' + similarity_metric + '/')
+    brain.plot_all_regions_rsm(avg_task_betas, metrics[similarity_metric], regions, save_path=figures_path + 'avg_betas_all_sess_' + similarity_metric + '/')
 
     # Compare rsms of avg_task_betas and st_tasksim
-    brain.compare_all_regions_rsm(avg_task_betas, sim_scores, metrics[similarity_metric], save_path=figures_path + 'avg_betas_all_sess_' + similarity_metric + '/', print_top_k=10)
+    brain.compare_all_regions_rsm(avg_task_betas, sim_scores, metrics[similarity_metric], regions, save_path=figures_path + 'avg_betas_all_sess_' + similarity_metric + '/', print_top_k=10)
 
     # Get betas per task, region, and session; averaged over all trials for runs
-    # avg_per_sess_task_betas = brain.average_task_betas_per_sess()
+    avg_per_sess_task_betas = brain.average_task_betas_per_sess()
 
     # Plot rsm of avg_per_sess_task_betas
-    # brain.plot_all_sessions_rsm(avg_per_sess_task_betas, metrics[similarity_metric], save_path=figures_path + 'avg_betas_per_sess_euclid' + similarity_metric + '/')
+    brain.plot_all_sessions_rsm(avg_per_sess_task_betas, metrics[similarity_metric], save_path=figures_path + 'avg_betas_per_sess_' + similarity_metric + '/')
 
-    # Get betas per task, region, and trial; averages over all sessions and runs 
+    # Get betas per task, region; leave one session out averaged over all runs and trials
+    for out_sess in sessions:
+        avg_per_loso_task_betas, avg_os_task_betas = brain.leave_1session_out_average_task_betas(out_sess)
+
+        # Get instruction similarity scores for the remaining tasks and plot it
+        ins_embedder.update_tasks(list(avg_per_loso_task_betas.values())[0].keys())
+        sim_scores = ins_embedder.sentence_similarity(normalize=False)
+        ins_embedder.plot_heatmap(sim_scores, save_path=figures_path + 'avg_betas_per_loso' +  '_' + similarity_metric + '/' + out_sess + '/')
+
+        # Plot rsm of avg_per_loo_task_betas
+        brain.plot_all_regions_rsm((avg_os_task_betas, avg_per_loso_task_betas), metrics[similarity_metric], regions, save_path=figures_path + 'avg_betas_per_loso' +  '_' + similarity_metric + '/' + out_sess + '/')
+
+        # Compare rsms of avg_per_loso_task_betas and st_tasksim
+        brain.compare_all_regions_rsm((avg_os_task_betas, avg_per_loso_task_betas), sim_scores, metrics[similarity_metric], regions, save_path=figures_path + 'avg_betas_per_loso' +  '_' + similarity_metric + '/' + out_sess + '/')
+
+    # Get betas per task, region; first and second half of sessions averaged over all runs and trials
+    avg_task_betas_first_half = brain.average_task_betas_over_halfsess_run(True)
+    avg_task_betas_second_half = brain.average_task_betas_over_halfsess_run(False)
+
+    # Plot rsm of avg_task_betas_first_half and avg_task_betas_second_half
+    brain.plot_all_regions_rsm((avg_task_betas_first_half, avg_task_betas_second_half), metrics[similarity_metric], regions, save_path=figures_path + 'avg_betas_first_second_half_' + similarity_metric + '/')
+
+    # Update instruction similarity scores 
+    ins_embedder.update_tasks(list(avg_task_betas_first_half.values())[0].keys())
+    sim_scores = ins_embedder.sentence_similarity(normalize=False)
+
+    # Compare rsms of avg_task_betas_first_half and avg_task_betas_second_half
+    brain.compare_all_regions_rsm((avg_task_betas_first_half, avg_task_betas_second_half), sim_scores, metrics[similarity_metric], regions, save_path=figures_path + 'avg_betas_first_second_half_' + similarity_metric + '/', print_top_k=10)

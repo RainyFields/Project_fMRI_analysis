@@ -3,7 +3,8 @@ data/iwisdm_trials
 data/only_fmri
 data/splits/*
 data/results/*
-data/sub-03/*
+data/betas/*
+data/activations/*
 *figures
 .DS_Store
 __pycache__

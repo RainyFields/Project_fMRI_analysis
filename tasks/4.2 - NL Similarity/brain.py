@@ -349,6 +349,7 @@ class Brain:
                 avg_betas_dict[name][task] = sess_betas
     
         return avg_betas_dict
+    
 
     def leave_1session_out_average_task_betas(self, out_sess): 
         """
@@ -360,21 +361,20 @@ class Brain:
             Dictionary with average betas for each region and task, leaving one session out.
         """
         avg_betas_dict = {}
+        out_sess_avg_betas_dict = {}
 
         # Across each region
         for name, indexes in self.mapped_atlas.items():
             avg_betas_dict[name] = {}
+            out_sess_avg_betas_dict[name] = {}
 
             # Across each task
             for task in self.task_betas.keys():
                 sess_betas = torch.tensor([])
-
                 sessions = list(self.task_betas[task].keys())
 
                 # Across each session
                 for sess in sessions:
-                    if sess == out_sess:
-                        continue
                     run_betas = torch.tensor([])
 
                     # Across each run
@@ -396,29 +396,61 @@ class Brain:
                     # Check if run_betas is not empty
                     if run_betas.shape[0] != 0:
                         run_betas = torch.mean(run_betas, axis=1).unsqueeze(1)
-                        sess_betas = torch.cat((sess_betas, run_betas), axis=1)
+                        if sess != out_sess:
+                            sess_betas = torch.cat((sess_betas, run_betas), axis=1)
+                        else:
+                            out_sess_avg_betas_dict[name][task] = run_betas.squeeze(1)
                     else:
                         print('no data at: ', name, task, sess, run)
                 sess_betas = torch.mean(sess_betas, axis=1)  
                 avg_betas_dict[name][task] = sess_betas
 
-        return avg_betas_dict
+        # Remove any tasks from avg_per_loso_task_betas that are not in avg_os_task_betas
+        aligned_avg_betas_dict = {}
+        for name in avg_betas_dict.keys():
+            aligned_avg_betas_dict[name] = {}
+            for task in out_sess_avg_betas_dict[name].keys():
+                aligned_avg_betas_dict[name][task] = avg_betas_dict[name][task]
+
+        return aligned_avg_betas_dict, out_sess_avg_betas_dict
     
-    def compare_region_rsm(self, betas_dict, baseline_rsm, metric):
+    def make_rsm(self, betas_dict1, betas_dict2, metric):
+        """
+        desc: Create a representational similarity matrix (RSM) for a region.
+        args:
+            betas_dict1: dict
+                Dictionary with betas for a region.
+            betas_dict2: dict, optional
+                Dictionary with betas for a second region.
+            metric: function
+                Similarity metric to use.
+        return: numpy array
+            Representational similarity matrix (RSM).
+        """
+
+        # If betas_dict2 is not None, compute the RSM across two sets of betas
+        if betas_dict2 is not None:
+            betas1 = torch.stack(list(betas_dict1.values()))
+            betas2 = torch.stack(list(betas_dict2.values()))
+            brain_rsm = metric(betas1, betas2)
+        # If betas_dict2 is None, compute the RSM for a single set of betas
+        else:
+            betas = torch.stack(list(betas_dict1.values()))
+            brain_rsm = metric(betas, betas)
+
+        return brain_rsm
+
+    def compare_region_rsm(self, brain_rsm, baseline_rsm):
         """
         desc: Compare the RSM of a region with a baseline RSM.
         args:
-            betas_dict: dict
-                Dictionary with betas for a region.
+            brain_rsm: numpy array
+                Brain RSM to compare.
             baseline_rsm: numpy array
                 Baseline RSM to compare with.
         return: float
             Pearson correlation coefficient between the region RSM and the baseline RSM.
         """
-
-        # Brain RSM
-        betas = torch.stack(list(betas_dict.values()))
-        brain_rsm = metric(betas, betas)
 
         # Only need upper triangle of the RSMs
         baseline_rsm = baseline_rsm[np.triu_indices(baseline_rsm.shape[0], k=1)]
@@ -433,14 +465,18 @@ class Brain:
         
         return correlation
 
-    def compare_all_regions_rsm(self, betas_dict, baseline_rsm, metric, save_path, print_top_k=10):
+    def compare_all_regions_rsm(self, betas_dict, baseline_rsm, metric, regions, save_path, print_top_k=10):
         """
         desc: Compare the RSM of all regions with a baseline RSM.
         args:
-            betas_dict: dict
-                Dictionary with betas for all regions.
+            betas_dict: dict or tuple
+                Dictionary (or tuple of dict) with betas for all regions. 
             baseline_rsm: numpy array
                 Baseline RSM to compare with.
+            metric: function
+                Similarity metric to use.
+            regions: list of str
+                List of region names.
             save_path: str
                 Path to save the results.
             print_top_k: int
@@ -449,46 +485,57 @@ class Brain:
         """
         rsm_similarities = pd.DataFrame(columns=['region', 'correlation'])
 
-        for region in betas_dict.keys():
-            corr = self.compare_region_rsm(betas_dict[region], baseline_rsm, metric)
+        # Compare rsm of each region with the baseline rsm
+        for region in regions:
+            if type(betas_dict) == tuple:
+                brain_rsm = self.make_rsm(betas_dict[0][region], betas_dict[1][region], metric)
+            else:
+                brain_rsm = self.make_rsm(betas_dict[region], None, metric)
+
+            corr = self.compare_region_rsm(brain_rsm, baseline_rsm)
             rsm_similarities.loc[len(rsm_similarities)] = [region, corr]
 
+        # Sort by correlation
+        rsm_similarities = rsm_similarities.sort_values(by='correlation', ascending=False)
+
+        # Save results
         rsm_similarities.to_csv(save_path + 'rsm_similarities.csv')
 
         # Print top k regions
         print(rsm_similarities.nlargest(print_top_k, 'correlation'))
     
-    def plot_region_rsm(self, region, betas_dict, metric, save_path):
+    def plot_region_rsm(self, region, brain_rsm, tasks, save_path):
         """
         desc: Plot the RSM of a region.
         args:
             region: str
                 Region name.
-            betas_dict: dict
-                Dictionary with betas for the region.
+            brain_rsm: numpy array
+                RSM of the region.
             save_path: str
                 Path to save the plot.
         return: None
         """
 
-        betas = torch.stack(list(betas_dict.values()))
-        brain_rsm = metric(betas, betas)
-
         # Plot region rsm with ticklabels as sentences
         plt.clf()
-        plt.imshow(brain_rsm, cmap='hot', interpolation='nearest')
+        plt.imshow(brain_rsm, cmap='hot', interpolation='nearest', vmin=0.0, vmax=1.0)
         plt.colorbar()
-        _ = plt.xticks(range(len(betas_dict.keys())), betas_dict.keys(), rotation=90)
-        _ = plt.yticks(range(len(betas_dict.keys())), betas_dict.keys())
+        _ = plt.xticks(range(len(tasks)), tasks, rotation=90)
+        _ = plt.yticks(range(len(tasks)), tasks)
         plt.title(region)
         plt.savefig(save_path + region + '_rsm.png')
 
-    def plot_all_regions_rsm(self, betas_dict, metric, save_path):
+    def plot_all_regions_rsm(self, betas_dict, metric, regions, save_path):
         """
         desc: Plot the RSM of all regions.
         args:
-            betas_dict: dict
-                Dictionary with betas for all regions.
+            betas_dict: dict or tuple
+                Dictionary (or tuple of dict) with betas for all regions.
+            metric: function
+                Similarity metric to use.
+            regions: list of str
+                List of region names.
             save_path: str
                 Path to save the plot.
         return: None
@@ -497,9 +544,14 @@ class Brain:
         if not os.path.exists(save_path):
             os.makedirs(save_path)
 
-        for region in betas_dict.keys(): 
-
-            self.plot_region_rsm(region, betas_dict[region], metric, save_path)
+        for region in regions: 
+            if type(betas_dict) == tuple:
+                brain_rsm = self.make_rsm(betas_dict[0][region], betas_dict[1][region], metric)
+                tasks = list(betas_dict[0][region].keys())
+            else:
+                brain_rsm = self.make_rsm(betas_dict[region], None, metric)
+                tasks = list(betas_dict[region].keys())
+            self.plot_region_rsm(region, brain_rsm, tasks, save_path)
 
     def plot_all_sessions_rsm(self, avg_per_sess_task_betas, metric, save_path):
         """
@@ -518,6 +570,7 @@ class Brain:
 
         for region in avg_per_sess_task_betas.keys(): 
             for session in avg_per_sess_task_betas[region].keys():
-                self.plot_region_rsm(region + '_' + session, avg_per_sess_task_betas[region][session], metric, save_path)
+                brain_rsm = self.make_rsm(avg_per_sess_task_betas[region][session], None, metric)
+                self.plot_region_rsm(region + '_' + session, brain_rsm, list(avg_per_sess_task_betas[region][session].keys()), save_path)
             
 
